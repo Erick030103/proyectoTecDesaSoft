@@ -4,6 +4,16 @@ import usuarioRuta from '../src/Routes/UsuarioRuta.js';
 const app = express();
 app.use(express.json());
 
+app.use(cors())
+
+app.get('/products/:id', function (req, res, next) {
+  res.json({msg: 'This is CORS-enabled for all origins!'})
+})
+
+app.listen(80, function () {
+  console.log('CORS-enabled web server listening on port 80')
+})
+
 const port = 5002 || process.env.port;
 
 app.use('/api', usuarioRuta);
